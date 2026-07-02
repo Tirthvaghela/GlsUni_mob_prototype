@@ -185,17 +185,19 @@
   <div class="flex-1 min-w-0 lg:ml-64 flex flex-col min-h-screen relative overflow-x-hidden">
 
 <!-- Top App Bar -->
-<header class="sticky top-0  w-full z-50 flex justify-between items-center px-container-padding h-16 bg-surface dark:bg-surface-charcoal border-b border-surface-container">
+<header class="sticky top-0  w-full z-50 flex justify-between items-center px-container-padding h-16 bg-surface dark:bg-surface-charcoal">
 <div class="flex items-center gap-3">
 
 <button class="lg:hidden p-2 -ml-2 mr-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
-              <span class="material-symbols-outlined text-primary">menu</span>
-            </button>
+          <span class="material-symbols-outlined text-primary">menu</span>
+        </button>
 <h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed">Academic Results</h1>
 </div>
-<button class="w-10 h-10 flex items-center justify-center text-primary transition-colors duration-200 hover:bg-surface-container-high rounded-full">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
 </button>
+</div>
 </header>
 <!-- Main Content Canvas -->
 <main class="pt-20 pb-32 px-container-padding max-w-5xl mx-auto w-full min-h-screen">
