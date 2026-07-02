@@ -1,0 +1,349 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Digital Student ID - GLS University</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edeeef",
+                    "on-primary-fixed": "#001b3c",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#003366",
+                    "background": "#f8f9fa",
+                    "outline": "#737780",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "gls-heritage-red": "#EE3124",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed": "#d2e4ff",
+                    "on-surface-variant": "#43474f",
+                    "on-background": "#191c1d",
+                    "secondary-fixed-dim": "#fabd00",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "secondary": "#785900",
+                    "outline-variant": "#c3c6d1",
+                    "primary-fixed": "#d5e3ff",
+                    "surface-container-high": "#e7e8e9",
+                    "error": "#ba1a1a",
+                    "on-surface": "#191c1d",
+                    "surface-container-highest": "#e1e3e4",
+                    "primary": "#001e40",
+                    "on-secondary": "#ffffff",
+                    "surface-charcoal": "#212529",
+                    "on-tertiary-container": "#659fe4",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-container": "#003560",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#001c37",
+                    "on-secondary-fixed": "#261a00",
+                    "surface-dim": "#d9dadb",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "on-secondary-container": "#6c5000",
+                    "on-tertiary-fixed-variant": "#004880",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-fixed": "#ffdf9e",
+                    "surface-variant": "#e1e3e4",
+                    "gold-leaf": "#D4AF37",
+                    "secondary-container": "#fdc003",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#a1c9ff",
+                    "tertiary": "#001f3c",
+                    "inverse-primary": "#a7c8ff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#3a5f94",
+                    "on-primary-container": "#799dd6",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding": "20px",
+                    "card-gap": "12px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "section-margin": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Montserrat"],
+                    "formal-serif": ["\"Source Serif 4\""],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "display-lg": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "title-lg": ["Montserrat"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "formal-serif": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #f8f9fa;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.id-card-perspective {
+    perspective: 1500px
+    }
+.id-card-glow {
+    box-shadow: 0 20px 40px -10px rgba(0, 30, 64, 0.15), 0 0 0 1px rgba(0, 30, 64, 0.05)
+    }
+.university-watermark {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBAhLXPHcl1W2F1wtSiWtziFqzQdnIh6O9guGZAiYluwhAH84FgghJ69EZ_e_fPMuBhcc8w1p5RwA5rT2hPw8oXiX0ylqzBqr_eqd5NZUib54LD264VWGEpeMMnT_uwDiDGTDESyJPsfu6vrOBPOFfsWJRfJ_CWePqM_Fc7eWCXpUWptpLF1lRjOf00B9AKqT5UxlJp3RlEeUZxhNuid7eTI74RWVHwCuSbR2KRk14BAGh2sRGBQLTsDg);
+    background-blend-mode: overlay;
+    opacity: 0.04
+    }
+.hologram-strip {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(212, 175, 55, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 200%;
+    animation: hologram-move 4s linear infinite
+    }
+@keyframes hologram-move {
+    0% {
+        background-position: -100% -100%;
+        } 100% {
+        background-position: 100% 100%;
+        }
+    }
+.safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col overflow-x-hidden">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="w-64 fixed inset-y-0 left-0 z-50 bg-surface-container-lowest border-r border-surface-container flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+    <div class="h-16 flex items-center justify-between px-6 border-b border-surface-container">
+      <span class="font-headline-sm text-primary font-bold">GLS University</span>
+      <button class="lg:hidden p-2 -mr-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="document.getElementById('sidebar').classList.add('-translate-x-full')">
+        <span class="material-symbols-outlined text-primary">close</span>
+      </button>
+    </div>
+    <nav class="flex-1 py-4 flex flex-col gap-2 px-4 overflow-y-auto">
+      <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="font-label-md">Home</span>
+        </a>
+      <a href="attendance_tracker.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">pie_chart</span>
+          <span class="font-label-md">Attendance</span>
+        </a>
+      <a href="fee_payments.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">payments</span>
+          <span class="font-label-md">Fees</span>
+        </a>
+      <a href="academic_results.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">grade</span>
+          <span class="font-label-md">Results</span>
+        </a>
+      <a href="exam_schedule.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">calendar_month</span>
+          <span class="font-label-md">Schedule</span>
+        </a>
+      <a href="campus_events.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">campaign</span>
+          <span class="font-label-md">Events</span>
+        </a>
+      <a href="digital_student_id.html" class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-colors">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">badge</span>
+          <span class="font-label-md">ID</span>
+        </a>
+    
+    </nav>
+    <div class="p-4 border-t border-surface-container mt-auto">
+      <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-gls-heritage-red hover:bg-red-50 rounded-lg transition-colors font-bold">
+        <span class="material-symbols-outlined">logout</span>
+        <span class="font-label-md">Logout</span>
+      </a>
+    </div>
+  </aside>
+  <!-- Main content wrapper -->
+  <div class="flex-1 lg:ml-64 flex flex-col min-h-screen w-full relative overflow-x-hidden">
+
+<!-- TopAppBar -->
+<header class="sticky top-0  w-full z-50 flex justify-between items-center px-container-padding h-16 bg-surface dark:bg-surface-charcoal transition-colors duration-200">
+<div class="flex items-center gap-3">
+<button class="lg:hidden p-2 -ml-2 mr-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
+          <span class="material-symbols-outlined text-primary">menu</span>
+        </button>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-size: 24px;">arrow_back</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed">Digital ID</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant" data-icon="notifications">notifications</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-container-padding max-w-md mx-auto w-full gap-8 py-12">
+<!-- ID Card Section -->
+<section class="id-card-perspective relative group w-full">
+<div class="bg-surface-container-lowest rounded-2xl p-6 id-card-glow relative overflow-hidden transition-transform duration-500 ease-out transform group-hover:rotate-y-2 group-hover:rotate-x-2">
+<!-- Watermark Layer -->
+<div class="absolute inset-0 university-watermark pointer-events-none"></div>
+<div class="absolute inset-0 hologram-strip pointer-events-none opacity-30"></div>
+<div class="flex justify-between items-start relative z-10 mb-6">
+<div class="flex flex-col">
+<h1 class="font-title-lg text-title-lg text-primary">Digital ID</h1>
+<span class="text-on-surface-variant font-label-md tracking-widest uppercase">Student Identity Card</span>
+</div>
+<div class="w-12 h-12 bg-gls-heritage-red rounded-full flex items-center justify-center text-white font-bold text-xl">GLS</div>
+</div>
+<!-- Content Body -->
+<div class="flex gap-6 relative z-10 mb-8">
+<!-- Profile Photo -->
+<div class="flex-shrink-0">
+<div class="w-28 h-36 rounded-xl overflow-hidden border-4 border-surface-container-high shadow-inner">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a professional-looking Indian male student with a friendly expression. He is wearing a crisp white collared shirt against a neutral studio background. The lighting is bright and even, consistent with a formal university identification photograph. The overall aesthetic is clean and academic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPqNFUd-Ng0oZlQ5d8hTwEgl5-lOZRoScl0z5xxeDNP7BlbXYfmsv-y2f2wLWTUzCC5PrInl_SB7cUXEnGanUmwGoxLbxlb83Twh2ROesclbt2FRMnxgx9bYTLSx5Z_kPlytNvRtIEom4E__pauusKihjuMllF1HRNPPl8DkiO-7IDyAeClLc2Zag5wyiFNw7qLluJY351lqe-FTMw17p_E2fq-haMYh3bD3-3_eelFlYdHAv1rxNIdg">
+</div>
+</div>
+<!-- Details -->
+<div class="flex flex-col justify-center gap-3">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider">Name</p>
+<p class="font-title-lg text-primary">Aryan Sharma</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider">Roll No</p>
+<p class="font-body-md text-primary font-bold">2022001</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider">Department</p>
+<p class="font-body-md text-primary">Institute of Design</p>
+</div>
+</div>
+</div>
+<!-- QR Code & Auth -->
+<div class="flex justify-between items-end relative z-10">
+<div class="flex flex-col gap-4">
+<div>
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider">Valid Until</p>
+<p class="font-label-md text-on-surface font-bold">31 July 2026</p>
+</div>
+<div class="border-b-2 border-primary-fixed-dim w-24 pb-1">
+<p class="font-formal-serif text-primary italic text-lg select-none">Aryan Sharma</p>
+<p class="text-on-surface-variant text-[9px] uppercase font-bold">Digital Signature</p>
+</div>
+</div>
+<div class="bg-white p-2 rounded-xl shadow-sm border border-outline-variant">
+<div class="w-24 h-24 bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+</div>
+<p class="text-center text-[9px] mt-1 font-bold text-primary uppercase">Scan for Entry</p>
+</div>
+</div>
+</div>
+<!-- Tap to flip instruction -->
+<p class="text-center mt-4 text-on-surface-variant text-label-md opacity-60">
+<span class="material-symbols-outlined align-middle text-sm mr-1">info</span>
+                Tap card for details &amp; digital barcode
+            </p>
+</section>
+<!-- Access Log / Activity Section -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="font-title-lg text-primary">Recent Access</h3>
+<button class="text-primary-container font-label-md hover:underline transition-all">View History</button>
+</div>
+<div class="grid gap-card-gap">
+<!-- Activity Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between shadow-sm border border-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-primary">Central Library</p>
+<p class="text-label-md text-on-surface-variant">Entrance Gate 02</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-primary">09:15 AM</p>
+<p class="text-label-md text-on-surface-variant">Today</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between shadow-sm border border-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-primary">Main Cafeteria</p>
+<p class="text-label-md text-on-surface-variant">Payment Terminal</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-primary">12:45 PM</p>
+<p class="text-label-md text-on-surface-variant">Yesterday</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<section class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center gap-2 p-6 bg-primary-container text-white rounded-2xl hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl">share</span>
+<span class="font-label-md">Share Profile</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-6 bg-surface-container-high text-primary rounded-2xl hover:bg-surface-variant transition-all active:scale-95">
+<span class="material-symbols-outlined text-3xl">file_download</span>
+<span class="font-label-md">Offline PDF</span>
+</button>
+</section>
+</main>
+<script>
+        const card = document.querySelector('.id-card-perspective div');
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
+
+        // Simple haptic-like feedback on touch
+        card.addEventListener('touchstart', () => {
+            card.style.transform = 'scale(0.98)';
+        });
+        card.addEventListener('touchend', () => {
+            card.style.transform = 'scale(1)';
+        });
+    </script>
+
+
+  </div>
+</body></html>
