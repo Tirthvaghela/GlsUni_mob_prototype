@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Fee Payments - GLS University</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-charcoal": "#212529",
+                    "inverse-primary": "#a7c8ff",
+                    "on-tertiary-container": "#659fe4",
+                    "primary-fixed-dim": "#a7c8ff",
+                    "secondary-fixed-dim": "#fabd00",
+                    "on-tertiary-fixed-variant": "#004880",
+                    "on-background": "#191c1d",
+                    "outline": "#737780",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#d5e3ff",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#d2e4ff",
+                    "on-secondary-container": "#6c5000",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-low": "#f3f4f5",
+                    "background": "#f8f9fa",
+                    "tertiary": "#001f3c",
+                    "primary-container": "#003366",
+                    "on-secondary-fixed": "#261a00",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#1f477b",
+                    "outline-variant": "#c3c6d1",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#001e40",
+                    "surface-dim": "#d9dadb",
+                    "surface-bright": "#f8f9fa",
+                    "on-tertiary-fixed": "#001c37",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "on-surface": "#191c1d",
+                    "on-primary-fixed": "#001b3c",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-surface-variant": "#43474f",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "secondary-fixed": "#ffdf9e",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#a1c9ff",
+                    "on-primary-container": "#799dd6",
+                    "tertiary-container": "#003560",
+                    "gold-leaf": "#D4AF37",
+                    "surface-tint": "#3a5f94",
+                    "gls-heritage-red": "#EE3124",
+                    "secondary": "#785900",
+                    "secondary-container": "#fdc003",
+                    "surface-container": "#edeeef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "section-margin": "32px",
+                    "gutter": "16px",
+                    "container-padding": "20px",
+                    "card-gap": "12px"
+            },
+            "fontFamily": {
+                    "title-lg": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Montserrat"],
+                    "formal-serif": ["\"Source Serif 4\""],
+                    "headline-lg-mobile": ["Montserrat"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Montserrat"],
+                    "body-md": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-mesh {
+            background-color: #f8f9fa;
+            background-image: radial-gradient(at 0% 0%, rgba(0, 30, 64, 0.05) 0px, transparent 50%), 
+                              radial-gradient(at 100% 100%, rgba(253, 192, 3, 0.05) 0px, transparent 50%);
+        }
+        .transaction-list-scroll {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .transaction-list-scroll::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="w-64 fixed inset-y-0 left-0 z-50 bg-surface-container-lowest border-r border-surface-container flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+    <div class="h-16 flex items-center justify-between px-6 border-b border-surface-container">
+      <span class="font-headline-sm text-primary font-bold">GLS University</span>
+      <button class="lg:hidden p-2 -mr-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="document.getElementById('sidebar').classList.add('-translate-x-full')">
+        <span class="material-symbols-outlined text-primary">close</span>
+      </button>
+    </div>
+    <nav class="flex-1 py-4 flex flex-col gap-2 px-4 overflow-y-auto">
+      <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="font-label-md">Home</span>
+        </a>
+      <a href="attendance_tracker.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">pie_chart</span>
+          <span class="font-label-md">Attendance</span>
+        </a>
+      <a href="fee_payments.html" class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-colors">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+          <span class="font-label-md">Fees</span>
+        </a>
+      <a href="academic_results.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">grade</span>
+          <span class="font-label-md">Results</span>
+        </a>
+      <a href="exam_schedule.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">calendar_month</span>
+          <span class="font-label-md">Schedule</span>
+        </a>
+      <a href="campus_events.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">campaign</span>
+          <span class="font-label-md">Events</span>
+        </a>
+      <a href="digital_student_id.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-lg transition-colors">
+          <span class="material-symbols-outlined">badge</span>
+          <span class="font-label-md">ID</span>
+        </a>
+    </nav>
+  </aside>
+  <!-- Main content wrapper -->
+  <div class="flex-1 lg:ml-64 flex flex-col min-h-screen w-full relative overflow-x-hidden">
+
+<!-- TopAppBar Section -->
+<header class="sticky top-0  w-full z-50 flex justify-between items-center px-container-padding h-16 bg-surface dark:bg-surface-charcoal transition-colors duration-200">
+<div class="flex items-center gap-3">
+<button class="lg:hidden p-2 -ml-2 mr-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
+          <span class="material-symbols-outlined text-primary">menu</span>
+        </button>
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="window.history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed">Fee Payments</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed p-2 rounded-full hover:bg-surface-container-high transition-colors">notifications</span>
+</div>
+</header>
+<main class="mt-20 px-container-padding space-y-6">
+<!-- Summary Dashboard (Bento Style) -->
+<section class="grid grid-cols-2 gap-card-gap">
+<!-- Total Outstanding -->
+<div class="col-span-2 bg-primary-container p-5 rounded-xl shadow-[0_4px_15px_rgba(0,30,64,0.12)] flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-on-primary-container opacity-10 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+<div class="relative z-10">
+<p class="font-label-md text-on-primary-container uppercase tracking-wider mb-1">Total Outstanding</p>
+<h2 class="font-headline-lg text-white mb-4">₹ 42,500</h2>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-gls-heritage-red text-white text-[10px] font-bold rounded-full uppercase">Overdue</span>
+<p class="text-on-primary-container text-xs font-medium">Due by 15 Oct 2023</p>
+</div>
+</div>
+<button class="mt-6 bg-secondary-container text-on-secondary-fixed font-bold py-3 rounded-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform shadow-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+                    Pay Now
+                </button>
+</div>
+<!-- Paid Summary -->
+<div class="bg-white p-4 rounded-xl shadow-[0_4px_15px_rgba(0,30,64,0.06)] border border-surface-container-high">
+<p class="font-label-md text-outline mb-1">Paid This Year</p>
+<p class="font-title-lg text-primary">₹ 1,25,000</p>
+<div class="mt-2 h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[74%] rounded-full"></div>
+</div>
+</div>
+<!-- Installments -->
+<div class="bg-white p-4 rounded-xl shadow-[0_4px_15px_rgba(0,30,64,0.06)] border border-surface-container-high">
+<p class="font-label-md text-outline mb-1">Pending Inst.</p>
+<p class="font-title-lg text-secondary">02 / 04</p>
+<p class="text-[10px] text-outline mt-2 italic">Next: Sem 4 Tuition</p>
+</div>
+</section>
+<!-- Upcoming Installments List -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<h3 class="font-title-lg text-primary">Next Installment</h3>
+<a class="text-label-md text-on-primary-container hover:underline" href="#">View Schedule</a>
+</div>
+<div class="bg-white p-4 rounded-xl border-l-4 border-l-secondary shadow-[0_4px_15px_rgba(0,30,64,0.04)] flex items-center justify-between">
+<div>
+<h4 class="font-body-md font-bold text-primary">Sem 4 Tuition Fee</h4>
+<p class="text-label-md text-outline">Due 15 Oct 2023</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-primary">₹ 35,000</p>
+<button class="text-secondary font-bold text-xs uppercase mt-1">Details</button>
+</div>
+</div>
+</section>
+<!-- Recent Transactions -->
+<section class="space-y-4">
+<div class="flex justify-between items-end">
+<h3 class="font-title-lg text-primary">Recent Transactions</h3>
+<span class="material-symbols-outlined text-outline">tune</span>
+</div>
+<div class="space-y-3">
+<!-- Transaction Item -->
+<div class="bg-white p-4 rounded-xl shadow-sm border border-surface-container flex items-center gap-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="font-body-md font-bold text-on-surface">Sem 3 Tuition Fee</h4>
+<p class="font-body-md font-bold text-on-surface">₹ 45,000</p>
+</div>
+<div class="flex justify-between items-center mt-1">
+<p class="text-label-md text-outline">24 Aug 2023 • ID: GLS-9923</p>
+<span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold uppercase">Success</span>
+</div>
+</div>
+</div>
+<!-- Transaction Item -->
+<div class="bg-white p-4 rounded-xl shadow-sm border border-surface-container flex items-center gap-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="font-body-md font-bold text-on-surface">Library Fine Re-eval</h4>
+<p class="font-body-md font-bold text-on-surface">₹ 250</p>
+</div>
+<div class="flex justify-between items-center mt-1">
+<p class="text-label-md text-outline">12 Jul 2023 • ID: GLS-8841</p>
+<span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold uppercase">Success</span>
+</div>
+</div>
+</div>
+<!-- Transaction Item -->
+<div class="bg-white p-4 rounded-xl shadow-sm border border-surface-container flex items-center gap-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">sports_soccer</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<h4 class="font-body-md font-bold text-on-surface">Sports Club Annual</h4>
+<p class="font-body-md font-bold text-on-surface">₹ 1,500</p>
+</div>
+<div class="flex justify-between items-center mt-1">
+<p class="text-label-md text-outline">05 Jun 2023 • ID: GLS-7762</p>
+<span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold uppercase">Success</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-4 text-primary font-bold text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-low rounded-xl transition-colors">
+                View All History
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</section>
+<!-- Help Section Card -->
+<section class="bg-surface-container rounded-2xl p-6 border border-outline-variant/30">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">contact_support</span>
+<div>
+<h3 class="font-title-lg text-primary">Need Assistance?</h3>
+<p class="text-label-md text-on-surface-variant mt-1">Contact the Accounts Department for payment inquiries, scholarship adjustments, or receipt issues.</p>
+<div class="flex gap-4 mt-4">
+<button class="bg-white text-primary border border-primary px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">mail</span>
+                            Email
+                        </button>
+<button class="bg-white text-primary border border-primary px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">call</span>
+                            Call
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Section -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-container-lowest dark:bg-surface-charcoal shadow-[0_-4px_15px_rgba(0,30,64,0.08)] rounded-t-xl">
+<!-- Nav items here... -->
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('touchstart', function() {
+                this.classList.add('opacity-70');
+            });
+            elem.addEventListener('touchend', function() {
+                this.classList.remove('opacity-70');
+            });
+        });
+
+        // Simple animation for the "Paid This Year" progress bar on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.querySelector('.bg-primary.w-\\[74\\%\\]');
+            if(progressBar) {
+                progressBar.style.width = '0%';
+                setTimeout(() => {
+                    progressBar.style.transition = 'width 1.5s cubic-bezier(0.65, 0, 0.35, 1)';
+                    progressBar.style.width = '74%';
+                }, 300);
+            }
+        });
+    </script>
+  </div>
+</body></html>

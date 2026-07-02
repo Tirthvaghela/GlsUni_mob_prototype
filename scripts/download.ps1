@@ -1,0 +1,10 @@
+$urls = @{
+    "digital_student_id.html" = "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NWExMGZkYTRhMGYwOTI1YzI3ZWQzMzNhN2JlEgsSBxCcidbhvRcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTAwNzYyNDA5MzAxMjcxODE1OQ&filename=&opi=89354086"
+    "student_dashboard.html" = "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NWExMTAyZjVmMWMwN2M0ZDk0YWMxMjdmOTY1EgsSBxCcidbhvRcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTAwNzYyNDA5MzAxMjcxODE1OQ&filename=&opi=89354086"
+    "campus_events.html" = "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NWExMTAxNmZiYjMwMzMyZmFmY2Q4MDBlNmViEgsSBxCcidbhvRcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTAwNzYyNDA5MzAxMjcxODE1OQ&filename=&opi=89354086"
+    "event_registration.html" = "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NWExMGZiM2ExZjUwMmE5YmQxZDJmMDU3MmJlEgsSBxCcidbhvRcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTAwNzYyNDA5MzAxMjcxODE1OQ&filename=&opi=89354086"
+    "attendance_tracker.html" = "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NWEwZTZmZGI1YTEwN2M0Y2Y1YWE2MGNjZDJkEgsSBxCcidbhvRcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTAwNzYyNDA5MzAxMjcxODE1OQ&filename=&opi=89354086"
+    "academic_results.html" = "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NWExMGZlOWRhZTUwMmE5OTUyNzVhMjhhOTE1EgsSBxCcidbhvRcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTAwNzYyNDA5MzAxMjcxODE1OQ&filename=&opi=89354086"
+    "student_portal.html" = "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1NWExMDA3NWNjMzkwN2M0ZTNjY2U0MDg0MDJjEgsSBxCcidbhvRcYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTAwNzYyNDA5MzAxMjcxODE1OQ&filename=&opi=89354086"
+}
+foreach ($k in $urls.Keys) { Invoke-WebRequest -Uri $urls[$k] -OutFile $k }
