@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(process.cwd(), 'index.html'),
         dashboard: resolve(process.cwd(), 'dashboard.html'),
+        chatbot: resolve(process.cwd(), 'chatbot.html'),
         attendance_tracker: resolve(process.cwd(), 'attendance_tracker.html'),
         fee_payments: resolve(process.cwd(), 'fee_payments.html'),
         academic_results: resolve(process.cwd(), 'academic_results.html'),
