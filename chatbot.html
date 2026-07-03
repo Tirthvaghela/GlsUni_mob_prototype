@@ -332,19 +332,19 @@
             </div>
             <!-- Quick Options -->
             <div class="quick-options" id="quickOptions">
-              <button class="quick-option-btn" onclick="handleQuickOption('admissions')">
+              <button class="quick-option-btn" onclick="selectOption('admissions')">
                 <span>Admissions & Enrollment</span>
                 <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
               </button>
-              <button class="quick-option-btn" onclick="handleQuickOption('fees')">
+              <button class="quick-option-btn" onclick="selectOption('fees')">
                 <span>Fees & Scholarships</span>
                 <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
               </button>
-              <button class="quick-option-btn" onclick="handleQuickOption('academics')">
+              <button class="quick-option-btn" onclick="selectOption('academics')">
                 <span>Academic Policies</span>
                 <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
               </button>
-              <button class="quick-option-btn" onclick="handleQuickOption('campus')">
+              <button class="quick-option-btn" onclick="selectOption('campus')">
                 <span>Campus & Facilities</span>
                 <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
               </button>
@@ -580,29 +580,59 @@
         return div.innerHTML;
       }
 
-      // Handle quick option selection
-      function handleQuickOption(category) {
-        const categoryName = categoryNames[category];
-        addMessage(categoryName, true);
-
-        const faqs = faqDatabase.filter((faq) => faq.category === category);
-
-        if (faqs.length > 0) {
-          setTimeout(() => {
-            addMessage(
-              `Here are some common questions about ${categoryName}:`,
-              false,
-              faqs.slice(0, 4).map((faq) => ({
-                text: faq.question,
-                value: faq.no
-              }))
-            );
-          }, 300);
+      // Handle key press in input
+      function handleKeyPress(event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+          sendMessage();
         }
       }
-
-      // Handle option selection
       function selectOption(faqNo) {
+        // Handle special commands
+        if (faqNo === "browse") {
+          addMessage("Browse by Category", true);
+          setTimeout(() => {
+            addMessage("Select a category to explore common questions:", false, [
+              { text: "Admissions & Enrollment", value: "admissions" },
+              { text: "Fees & Scholarships", value: "fees" },
+              { text: "Academic Policies", value: "academics" },
+              { text: "Campus & Facilities", value: "campus" }
+            ]);
+          }, 300);
+          return;
+        }
+
+        if (faqNo === "ask") {
+          addMessage("Ask Another Question", true);
+          setTimeout(() => {
+            addMessage("What would you like to know?", false);
+          }, 300);
+          return;
+        }
+
+        // Handle category selection
+        if (["admissions", "fees", "academics", "campus"].includes(faqNo)) {
+          const categoryName = categoryNames[faqNo];
+          addMessage(categoryName, true);
+
+          const faqs = faqDatabase.filter((faq) => faq.category === faqNo);
+
+          if (faqs.length > 0) {
+            setTimeout(() => {
+              addMessage(
+                `Here are some common questions about ${categoryName}:`,
+                false,
+                faqs.slice(0, 4).map((faq) => ({
+                  text: faq.question,
+                  value: faq.no
+                }))
+              );
+            }, 300);
+          }
+          return;
+        }
+
+        // Handle FAQ selection
         const faq = faqDatabase.find((f) => f.no == faqNo);
 
         if (faq) {
