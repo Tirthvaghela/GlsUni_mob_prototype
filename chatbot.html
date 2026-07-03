@@ -689,7 +689,12 @@
 
       // Close chat
       function closeChat() {
-        window.close();
+        // Try to go back in history first, otherwise redirect to dashboard
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "dashboard.html";
+        }
       }
 
       // Get user name from URL or localStorage
