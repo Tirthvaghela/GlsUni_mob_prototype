@@ -606,6 +606,13 @@
           addMessage("Ask Another Question", true);
           setTimeout(() => {
             addMessage("What would you like to know?", false);
+            // Focus input field and clear it for new question
+            setTimeout(() => {
+              const inputField = document.getElementById("messageInput");
+              inputField.value = "";
+              inputField.focus();
+              inputField.placeholder = "Type your question here...";
+            }, 100);
           }, 300);
           return;
         }
@@ -627,6 +634,10 @@
                   value: faq.no
                 }))
               );
+              // Focus input field for search or new question
+              setTimeout(() => {
+                document.getElementById("messageInput").focus();
+              }, 100);
             }, 300);
           }
           return;
@@ -732,6 +743,12 @@
         const params = new URLSearchParams(window.location.search);
         const name = params.get("name") || localStorage.getItem("userName") || "there";
         document.getElementById("userName").textContent = name.charAt(0).toUpperCase() + name.slice(1);
+        
+        // Focus input field after chat loads
+        setTimeout(() => {
+          const inputField = document.getElementById("messageInput");
+          inputField.focus();
+        }, 500);
       }
 
       // Initialize
