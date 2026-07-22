@@ -170,7 +170,7 @@
 <button class="lg:hidden p-2 -ml-2 mr-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
           <span class="material-symbols-outlined text-primary">menu</span>
         </button>
-<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed">Exam Schedule</h1>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed">Schedule</h1>
 </div>
 <div class="flex items-center gap-2">
 <button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors duration-200">
@@ -179,7 +179,41 @@
 </div>
 </header>
 <!-- Main Content Canvas -->
-<main class="pt-24 px-container-padding space-y-6">
+<main class="pt-24 px-container-padding pb-10 space-y-6">
+<!-- Schedule Type Tabs -->
+<div class="flex items-center gap-2 bg-surface-container-low p-1.5 rounded-full w-fit">
+<button class="schedule-tab-btn px-5 py-2 rounded-full font-label-md text-label-md transition-colors flex items-center gap-1.5" data-tab="class" onclick="setScheduleTab('class')">
+<span class="material-symbols-outlined text-[18px]">school</span>
+              Class Schedule
+            </button>
+<button class="schedule-tab-btn px-5 py-2 rounded-full font-label-md text-label-md transition-colors flex items-center gap-1.5" data-tab="exam" onclick="setScheduleTab('exam')">
+<span class="material-symbols-outlined text-[18px]">edit_document</span>
+              Exam Schedule
+            </button>
+</div>
+<!-- Class Schedule Panel -->
+<div class="hidden space-y-6" id="classPanel">
+<section class="relative overflow-hidden rounded-xl bg-primary text-on-primary p-6 shadow-lg">
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-on-primary-container mb-1">Semester 4 · FCAIT</p>
+<h2 class="font-title-lg text-title-lg mb-2">Weekly Timetable</h2>
+<div class="flex items-center gap-2 bg-primary-container/30 w-fit px-3 py-1 rounded-full border border-on-primary-container/20">
+<span class="material-symbols-outlined text-[18px]">event_available</span>
+<span class="font-label-md text-label-md">Odd Semester 2024-25</span>
+</div>
+</div>
+<div class="absolute top-0 right-0 opacity-10 pointer-events-none">
+<svg height="200" viewbox="0 0 200 200" width="200">
+<circle cx="150" cy="50" fill="white" r="100"></circle>
+<circle cx="180" cy="80" fill="white" r="60"></circle>
+</svg>
+</div>
+</section>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1" id="dayPills"></div>
+<div class="space-y-4" id="classList"></div>
+</div>
+<!-- Exam Schedule Panel -->
+<div class="space-y-6" id="examPanel">
 <!-- Header Banner / Info -->
 <section class="relative overflow-hidden rounded-xl bg-primary text-on-primary p-6 shadow-lg">
 <div class="relative z-10">
@@ -323,6 +357,7 @@
 </div>
 </div>
 </section>
+</div>
 </main>
 <!-- BottomNavBar -->
 
@@ -337,6 +372,132 @@
                 header.classList.replace('bg-white', 'bg-surface');
             }
         });
+
+        // --- Class Schedule data & rendering ---
+        const classSchedule = {
+            Mon: [
+                { time: '09:00 - 10:00', subject: 'Data Structures & Algorithms', room: 'Room 302', faculty: 'Prof. R. Mehta', type: 'Lecture' },
+                { time: '10:00 - 11:00', subject: 'Database Management', room: 'Room 302', faculty: 'Prof. S. Shah', type: 'Lecture' },
+                { time: '11:15 - 12:15', subject: 'Operating Systems', room: 'Room 305', faculty: 'Prof. A. Iyer', type: 'Lecture' },
+                { time: '12:15 - 01:00', subject: 'Lunch Break', room: '', faculty: '', type: 'Break' },
+                { time: '02:00 - 04:00', subject: 'DSA Lab', room: 'Lab 402, Block C', faculty: 'Prof. R. Mehta', type: 'Lab' },
+            ],
+            Tue: [
+                { time: '09:00 - 10:00', subject: 'Computer Networks', room: 'Room 210', faculty: 'Prof. K. Rao', type: 'Lecture' },
+                { time: '10:00 - 11:00', subject: 'Software Engineering', room: 'Room 210', faculty: 'Dr. N. Bhatt', type: 'Lecture' },
+                { time: '11:15 - 01:15', subject: 'DBMS Lab', room: 'Lab 204', faculty: 'Prof. S. Shah', type: 'Lab' },
+                { time: '02:00 - 03:00', subject: 'Technical Communication', room: 'Room 108', faculty: 'Prof. M. Desai', type: 'Lecture' },
+            ],
+            Wed: [
+                { time: '09:00 - 10:00', subject: 'Data Structures & Algorithms', room: 'Room 302', faculty: 'Prof. R. Mehta', type: 'Lecture' },
+                { time: '10:00 - 11:00', subject: 'Operating Systems', room: 'Room 305', faculty: 'Prof. A. Iyer', type: 'Lecture' },
+                { time: '11:15 - 01:15', subject: 'OS Lab', room: 'Lab 305', faculty: 'Prof. A. Iyer', type: 'Lab' },
+                { time: '02:00 - 03:00', subject: 'Web Technologies', room: 'Room 210', faculty: 'Prof. J. Patel', type: 'Lecture' },
+            ],
+            Thu: [
+                { time: '09:00 - 10:00', subject: 'Database Management', room: 'Room 302', faculty: 'Prof. S. Shah', type: 'Lecture' },
+                { time: '10:00 - 11:00', subject: 'Computer Networks', room: 'Room 210', faculty: 'Prof. K. Rao', type: 'Lecture' },
+                { time: '11:15 - 12:15', subject: 'Software Engineering', room: 'Room 210', faculty: 'Dr. N. Bhatt', type: 'Lecture' },
+                { time: '02:00 - 04:00', subject: 'Networks Lab', room: 'Lab 204', faculty: 'Prof. K. Rao', type: 'Lab' },
+            ],
+            Fri: [
+                { time: '09:00 - 10:00', subject: 'Operating Systems', room: 'Room 305', faculty: 'Prof. A. Iyer', type: 'Lecture' },
+                { time: '10:00 - 11:00', subject: 'Web Technologies', room: 'Room 210', faculty: 'Prof. J. Patel', type: 'Lecture' },
+                { time: '11:15 - 12:15', subject: 'Technical Communication', room: 'Room 108', faculty: 'Prof. M. Desai', type: 'Lecture' },
+                { time: '12:15 - 01:00', subject: 'Library Hour', room: 'Central Library', faculty: '', type: 'Self-Study' },
+            ],
+            Sat: [
+                { time: '09:00 - 11:00', subject: 'Mini Project Review', room: 'Seminar Hall', faculty: 'Dr. N. Bhatt', type: 'Project' },
+                { time: '11:00 - 12:00', subject: 'Mentorship Session', room: 'Room 108', faculty: 'Class Mentor', type: 'Mentoring' },
+            ],
+        };
+
+        const typeStyles = {
+            Lecture: { border: 'border-primary/30', badge: 'bg-primary-container/10 text-primary-container' },
+            Lab: { border: 'border-secondary-container', badge: 'bg-secondary-container/30 text-on-secondary-fixed' },
+            Break: { border: 'border-outline-variant', badge: 'bg-surface-container text-outline' },
+            'Self-Study': { border: 'border-outline-variant', badge: 'bg-surface-container text-outline' },
+            Project: { border: 'border-gls-heritage-red/40', badge: 'bg-error-container text-error' },
+            Mentoring: { border: 'border-gls-heritage-red/40', badge: 'bg-error-container text-error' },
+        };
+
+        const dayLabels = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday' };
+        let currentDay = 'Mon';
+
+        function renderDayPills() {
+            const container = document.getElementById('dayPills');
+            container.innerHTML = Object.keys(dayLabels).map((day) => `
+                <button class="day-pill shrink-0 px-4 py-2 rounded-full font-label-md text-label-md border transition-colors ${day === currentDay ? 'bg-primary text-on-primary border-primary' : 'border-outline-variant text-on-surface-variant'}" data-day="${day}" onclick="setClassDay('${day}')">${day}</button>
+            `).join('');
+        }
+
+        function renderClassDay(day) {
+            const list = document.getElementById('classList');
+            const items = classSchedule[day] || [];
+            list.innerHTML = items.map((item) => {
+                const style = typeStyles[item.type] || typeStyles.Lecture;
+                return `
+                <div class="bg-surface-container-lowest rounded-xl p-4 exam-card-shadow border-l-4 ${style.border} flex gap-4 transition-transform active:scale-[0.98]">
+                    <div class="bg-surface-container-low rounded-lg px-3 py-2 text-center min-w-[100px] flex flex-col justify-center">
+                        <span class="block font-bold text-sm text-primary leading-tight">${item.time}</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start gap-2">
+                            <h4 class="font-title-lg text-title-lg text-on-surface">${item.subject}</h4>
+                            <span class="text-[10px] uppercase font-bold px-2 py-1 rounded-full shrink-0 ${style.badge}">${item.type}</span>
+                        </div>
+                        <div class="flex flex-wrap gap-4 mt-2">
+                            ${item.room ? `<div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-outline text-[18px]">location_on</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant">${item.room}</span>
+                            </div>` : ''}
+                            ${item.faculty ? `<div class="flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-outline text-[18px]">person</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant">${item.faculty}</span>
+                            </div>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function setClassDay(day) {
+            currentDay = day;
+            renderDayPills();
+            renderClassDay(day);
+        }
+
+        function setScheduleTab(tab) {
+            const classPanel = document.getElementById('classPanel');
+            const examPanel = document.getElementById('examPanel');
+            const classBtn = document.querySelector('.schedule-tab-btn[data-tab="class"]');
+            const examBtn = document.querySelector('.schedule-tab-btn[data-tab="exam"]');
+            const activeClasses = ['bg-primary', 'text-on-primary'];
+            const inactiveClasses = ['text-on-surface-variant'];
+
+            if (tab === 'class') {
+                classPanel.classList.remove('hidden');
+                examPanel.classList.add('hidden');
+                classBtn.classList.add(...activeClasses);
+                classBtn.classList.remove(...inactiveClasses);
+                examBtn.classList.remove(...activeClasses);
+                examBtn.classList.add(...inactiveClasses);
+            } else {
+                examPanel.classList.remove('hidden');
+                classPanel.classList.add('hidden');
+                examBtn.classList.add(...activeClasses);
+                examBtn.classList.remove(...inactiveClasses);
+                classBtn.classList.remove(...activeClasses);
+                classBtn.classList.add(...inactiveClasses);
+            }
+        }
+
+        // Init: default to today's weekday for the class list, and show Exam Schedule first
+        const weekdayMap = ['Sat', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        currentDay = weekdayMap[new Date().getDay()];
+        renderDayPills();
+        renderClassDay(currentDay);
+        setScheduleTab('exam');
     </script>
   </div>
 </body></html>

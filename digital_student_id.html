@@ -206,9 +206,9 @@
 </div>
 </header>
 <!-- Main Content Canvas -->
-<main class="flex-grow flex flex-col items-center justify-center px-container-padding max-w-md mx-auto w-full gap-8 py-12">
+<main class="flex-grow flex flex-col items-center px-container-padding max-w-2xl mx-auto w-full gap-8 py-12">
 <!-- ID Card Section -->
-<section class="id-card-perspective relative group w-full">
+<section class="id-card-perspective relative group w-full max-w-md mx-auto">
 <div class="bg-surface-container-lowest rounded-2xl p-6 id-card-glow relative overflow-hidden transition-transform duration-500 ease-out transform group-hover:rotate-y-2 group-hover:rotate-x-2">
 <!-- Watermark Layer -->
 <div class="absolute inset-0 university-watermark pointer-events-none"></div>
@@ -270,14 +270,81 @@
                 Tap card for details &amp; digital barcode
             </p>
 </section>
+<!-- Student Details Section -->
+<section class="w-full grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container">
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider mb-1">Course</p>
+<p class="font-body-md font-bold text-primary">IMSCIT</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container">
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider mb-1">Batch</p>
+<p class="font-body-md font-bold text-primary">2022 - 2026</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container">
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider mb-1">Blood Group</p>
+<p class="font-body-md font-bold text-gls-heritage-red">O+</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-surface-container">
+<p class="text-on-surface-variant text-[10px] uppercase font-semibold tracking-wider mb-1">Contact</p>
+<p class="font-body-md font-bold text-primary">+91 98765 43210</p>
+</div>
+</section>
+<!-- Linked Services Section -->
+<section class="w-full flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="font-title-lg text-primary">Linked Services</h3>
+<span class="flex items-center gap-1.5 text-secondary font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+              Card Active
+            </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container flex flex-col items-center gap-1.5 text-center">
+<span class="material-symbols-outlined text-primary-container">local_library</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Library</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container flex flex-col items-center gap-1.5 text-center">
+<span class="material-symbols-outlined text-primary-container">hotel</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Hostel</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container flex flex-col items-center gap-1.5 text-center opacity-60">
+<span class="material-symbols-outlined text-outline">directions_bus</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Transport</span>
+<span class="material-symbols-outlined text-outline text-[16px]">cancel</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container flex flex-col items-center gap-1.5 text-center">
+<span class="material-symbols-outlined text-primary-container">science</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Lab Access</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</section>
 <!-- Access Log / Activity Section -->
-<section class="flex flex-col gap-4">
+<section class="w-full flex flex-col gap-4">
 <div class="flex justify-between items-center">
 <h3 class="font-title-lg text-primary">Recent Access</h3>
 <button class="text-primary-container font-label-md hover:underline transition-all">View History</button>
 </div>
 <div class="grid gap-card-gap">
 <!-- Activity Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between shadow-sm border border-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">meeting_room</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-primary">Main Gate</p>
+<p class="text-label-md text-on-surface-variant">Entrance Scan</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-primary">08:50 AM</p>
+<p class="text-label-md text-on-surface-variant">Today</p>
+</div>
+</div>
+<!-- Activity Item 2 -->
 <div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between shadow-sm border border-surface-container">
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
@@ -293,7 +360,7 @@
 <p class="text-label-md text-on-surface-variant">Today</p>
 </div>
 </div>
-<!-- Activity Item 2 -->
+<!-- Activity Item 3 -->
 <div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between shadow-sm border border-surface-container">
 <div class="flex items-center gap-4">
 <div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary">
@@ -309,10 +376,26 @@
 <p class="text-label-md text-on-surface-variant">Yesterday</p>
 </div>
 </div>
+<!-- Activity Item 4 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center justify-between shadow-sm border border-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">computer</span>
+</div>
+<div>
+<p class="font-body-md font-bold text-primary">Computer Lab 3</p>
+<p class="text-label-md text-on-surface-variant">Swipe Access</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md font-bold text-primary">03:30 PM</p>
+<p class="text-label-md text-on-surface-variant">Yesterday</p>
+</div>
+</div>
 </div>
 </section>
 <!-- Action Buttons -->
-<section class="grid grid-cols-2 gap-4">
+<section class="w-full grid grid-cols-2 gap-4">
 <button class="flex flex-col items-center justify-center gap-2 p-6 bg-primary-container text-white rounded-2xl hover:opacity-90 transition-all active:scale-95">
 <span class="material-symbols-outlined text-3xl">share</span>
 <span class="font-label-md">Share Profile</span>
@@ -322,6 +405,10 @@
 <span class="font-label-md">Offline PDF</span>
 </button>
 </section>
+<button class="w-full flex items-center justify-center gap-2 py-3 text-gls-heritage-red font-label-md border border-gls-heritage-red/30 rounded-xl hover:bg-red-50 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">report</span>
+          Report Lost / Damaged Card
+        </button>
 </main>
 <script>
         const card = document.querySelector('.id-card-perspective div');
